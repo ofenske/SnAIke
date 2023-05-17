@@ -92,7 +92,7 @@ class Screen:
         :param map: The map object
         :return: None
         """
-        for item in map.paralyze_position:
+        for item in map.blue_fruits:
             pygame.draw.rect(self.__game_window, self.__blue, pygame.Rect(
                 item[0] * 10, item[1] * 10, 10, 10))
 

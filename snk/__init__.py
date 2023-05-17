@@ -109,16 +109,16 @@ class Game:
                 self.__map.super_food = []
 
         # check if snake eats paralyze food
-        for index, item in enumerate(self.__map.paralyze_position):
+        for index, item in enumerate(self.__map.blue_fruits):
             if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
                 if self.__super_segments > 0:
-                    self.__map.paralyze_position = []
+                    self.__map.blue_fruits = []
                     self.__super_segments = 0
                     self.__score -= 50
                 else:
                     self.__paralyzed = 0
                     self.__paralyzed_segments = 3
-                    self.__map.paralyze_position.pop(index)
+                    self.__map.blue_fruits.pop(index)
                     self.__score -= 10
 
         # Spawn new fruit and poison
@@ -262,16 +262,16 @@ class Game:
                 self.__map.super_food = []
 
         # check if snake eats paralyze food
-        for index, item in enumerate(self.__map.paralyze_position):
+        for index, item in enumerate(self.__map.blue_fruits):
             if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
                 if self.__super_segments > 0:
-                    self.__map.paralyze_position = []
+                    self.__map.blue_fruits = []
                     self.__super_segments = 0
                     self.__score -= 50
                 else:
                     self.__paralyzed = 0
                     self.__paralyzed_segments = 3
-                    self.__map.paralyze_position.pop(index)
+                    self.__map.blue_fruits.pop(index)
                     self.__score -= 10
 
         # Spawn new fruit and poison
