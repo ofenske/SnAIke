@@ -340,10 +340,13 @@ class Game:
         :return: A map object, which has the following attrubutes:
             snake_position = Position of the snake head as a list: [x,y]
             snake_body = Position of all body parts of the snake as a list of lists: [[x1,y1],...,[xn, yn]]
-            white_fruit = x and y coordinates of the food as a list: [x,y]
-            red_fruits = x and y coordinates of poison food as a list of lists: [[x1,y1],...,[xn, yn]]
-            yellow_fruit = x and y coordinates of super food as a list: [x,y] (gives snake 3 super segments)
             snake_direction = The direction in which the snake is heading as a string: UP|DOWN|RIGHT|LEFT
+            yellow_segments = Number of additional lifes
+            blue_segments = Number of uncontrollable/random movements.
+            white_fruit = x and y coordinates of white fruit as a list: [x,y]
+            yellow_fruit = x and y coordinates of yellow fruit as a list: [x,y] (gives snake 3 super segments)
+            red_fruits = x and y coordinates of red_fruits as a list of lists: [[x1,y1],...,[xn, yn]]
+            blue_fruits = x and y coordinates of blue fruits as a list of lists: [[x1,y1],...,[xn, yn]]
             window_x = Maximum size of map in x dimension
             window_y = Maximum size of map in y dimension
         """

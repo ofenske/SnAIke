@@ -58,6 +58,8 @@ Diese kann er z. B. mit `game.map_status` von der Spiel-Engine erfragen. Die Map
 * snake_position = Position vom Schlangen-Kopf
 * snake_body = Position aller Teile des Schlangen-Körpers in Form von x,y-Werten
 * snake_direction = Die Richtung in die sich die Schlange aktuell bewegt als String: UP|DOWN|RIGHT|LEFT
+* yellow_segments = Spiegelt die Anzahl der durch die gelbe Frucht verliehenen zusätzlichen Leben wieder.
+* blue_segments = Spiegelt die verbleibende Anzahl der durch die blaue Frucht hervorgerufenen unkontrollierbaren Bewegungen wieder.
 * white_fruit = x,y-Koordinaten von der weißen Frucht als Liste: [x,y]
 * yellow_fruit = x,y-Koordinaten von der gelben Frucht als Liste: [x,y]
 * red_fruit = x,y-Koordinaten aller roten Früchte als Liste von Listen: [[x1,y1],...,[xn, yn]]
