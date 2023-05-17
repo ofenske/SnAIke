@@ -83,8 +83,8 @@ class Game:
         # Snake body growing mechanism
         # if fruits and snakes collide then score will be incremented by 10
         self.__map.snake_body.insert(0, list(self.__map.snake_position))
-        if self.__map.snake_position[0] == self.__map.fruit_position[0] and self.__map.snake_position[1] == \
-                self.__map.fruit_position[1]:
+        if self.__map.snake_position[0] == self.__map.white_fruit[0] and self.__map.snake_position[1] == \
+                self.__map.white_fruit[1]:
             # If we have super segments then score will be incremented by 20
             if self.__super_segments > 0:
                 self.__score += 50
@@ -236,8 +236,8 @@ class Game:
         # Snake body growing mechanism
         # if fruits and snakes collide then score will be incremented by 10
         self.__map.snake_body.insert(0, list(self.__map.snake_position))
-        if self.__map.snake_position[0] == self.__map.fruit_position[0] and self.__map.snake_position[1] == \
-                self.__map.fruit_position[1]:
+        if self.__map.snake_position[0] == self.__map.white_fruit[0] and self.__map.snake_position[1] == \
+                self.__map.white_fruit[1]:
             # If we have super segments then score will be incremented by 20
             if self.__super_segments > 0:
                 self.__score += 50
@@ -340,7 +340,7 @@ class Game:
         :return: A map object, which has the following attrubutes:
             snake_position = Position of the snake head as a list: [x,y]
             snake_body = Position of all body parts of the snake as a list of lists: [[x1,y1],...,[xn, yn]]
-            fruit_position = x and y coordinates of the food as a list: [x,y]
+            white_fruit = x and y coordinates of the food as a list: [x,y]
             poison_position = x and y coordinates of poison food as a list of lists: [[x1,y1],...,[xn, yn]]
             super_food = x and y coordinates of super food as a list: [x,y] (gives snake 3 super segments)
             snake_direction = The direction in which the snake is heading as a string: UP|DOWN|RIGHT|LEFT

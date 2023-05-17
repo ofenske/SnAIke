@@ -22,8 +22,8 @@ class Map:
         # set a seed for the generator
         random.seed(8)
         # fruit position
-        self.__fruit_position = [random.randrange(1, self.__window_x),
-                                 random.randrange(1, self.__window_y)]
+        self.__white_fruit = [random.randrange(1, self.__window_x),
+                              random.randrange(1, self.__window_y)]
 
         self.__poison_position = [[random.randrange(1, self.__window_x),
                                    random.randrange(1, self.__window_y)]]
@@ -83,17 +83,17 @@ class Map:
         self.__snake_body = snake_body
 
     @property
-    def fruit_position(self) -> list:
+    def white_fruit(self) -> list:
         """Coordinates of the fruit
 
         :return: x and y coordinates of the fruit
         :rtype: list
         """
-        return self.__fruit_position
+        return self.__white_fruit
 
-    @fruit_position.setter
+    @white_fruit.setter
     def fruit_position(self, fruit_position: list):
-        self.__fruit_position = fruit_position
+        self.__white_fruit = fruit_position
 
     @property
     def poison_position(self) -> [list]:
@@ -167,17 +167,17 @@ class Map:
         self.__snake_direction = snake_direction
 
     def spawn_new_fruit(self):
-        self.__fruit_position = [random.randrange(1, self.__window_x),
-                                 random.randrange(1, self.__window_y)]
-        if self.__fruit_position in self.__paralyze_position or self.__fruit_position in self.__poison_position:
+        self.__white_fruit = [random.randrange(1, self.__window_x),
+                              random.randrange(1, self.__window_y)]
+        if self.__white_fruit in self.__paralyze_position or self.__white_fruit in self.__poison_position:
             self.spawn_new_fruit()
-        elif self.__fruit_position in self.__super_food:
+        elif self.__white_fruit in self.__super_food:
             self.spawn_new_fruit()
 
     def spawn_new_poison(self):
         poison_position = [random.randrange(1, self.__window_x),
                            random.randrange(1, self.__window_y)]
-        if poison_position in self.__paralyze_position or poison_position in self.__fruit_position:
+        if poison_position in self.__paralyze_position or poison_position in self.__white_fruit:
             self.spawn_new_poison()
         elif poison_position in self.__super_food:
             self.spawn_new_poison()
@@ -188,7 +188,7 @@ class Map:
         paralyzed_food = [random.randrange(1, self.__window_x),
                           random.randrange(1, self.__window_y)]
 
-        if paralyzed_food in self.__poison_position or paralyzed_food in self.__fruit_position:
+        if paralyzed_food in self.__poison_position or paralyzed_food in self.__white_fruit:
             self.spawn_new_paralyze_food()
         elif paralyzed_food in self.__super_food:
             self.spawn_new_paralyze_food()
@@ -199,7 +199,7 @@ class Map:
         self.__super_food = [random.randrange(1, self.__window_x),
                              random.randrange(1, self.__window_y)]
 
-        if self.__super_food in self.__poison_position or self.__super_food in self.__fruit_position:
+        if self.__super_food in self.__poison_position or self.__super_food in self.__white_fruit:
             self.spawn_new_super_food()
         elif self.__super_food in self.__paralyze_position:
             self.spawn_new_super_food()

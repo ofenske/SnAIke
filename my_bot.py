@@ -27,7 +27,7 @@ while True:
     # Get individual information about the map
     heading = map_status.snake_direction
     snake_position = map_status.snake_position
-    fruit_position = map_status.fruit_position
+    white_fruit = map_status.white_fruit
     min_x, max_x = 0, map_status.window_x
     min_y, max_y = 0, map_status.window_y
 
@@ -63,7 +63,7 @@ while True:
     # if we are at the right wall/if direction is upwards
     if heading == 'UP':
         # if we are at the same y coordinate/line with fruit, turn left
-        if snake_position[1] == fruit_position[1]:
+        if snake_position[1] == white_fruit[1]:
             game.send_command('LEFT')
             continue
 
