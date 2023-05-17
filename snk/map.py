@@ -17,7 +17,7 @@ class Map:
                              [9, 5],
                              [8, 5],
                              [7, 5]]
-        self.__paralyzed_segments = 0
+        self.__blue_segments = 0
         self.__yellow_segments = 0
         # set a seed for the generator
         random.seed(8)
@@ -147,12 +147,12 @@ class Map:
         return self.__snake_direction
 
     @property
-    def paralyzed_segments(self) -> int:
-        return self.__paralyzed_segments
+    def blue_segments(self) -> int:
+        return self.__blue_segments
 
-    @paralyzed_segments.setter
-    def paralyzed_segments(self, num: int):
-        self.__paralyzed_segments = num
+    @blue_segments.setter
+    def blue_segments(self, num: int):
+        self.__blue_segments = num
 
     @property
     def yellow_segments(self) -> int:

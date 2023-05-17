@@ -22,7 +22,7 @@ class Game:
         self.__turn = 1
         self.__yellow_segments = self.__map.yellow_segments
         self.__paralyzed = None
-        self.__paralyzed_segments = self.__map.paralyzed_segments
+        self.__blue_segments = self.__map.blue_segments
         self.change_to = self.__map.snake_direction
         # Initialising pygame
         pygame.init()
@@ -54,9 +54,9 @@ class Game:
                     self.change_to = random.choice(['DOWN', 'LEFT', 'UP'])
                 else:
                     self.change_to = random.choice(['DOWN', 'RIGHT', 'UP'])
-                self.__paralyzed_segments -= 1
+                self.__blue_segments -= 1
 
-            elif self.__paralyzed_segments == 0:
+            elif self.__blue_segments == 0:
                 self.__paralyzed = None
 
         # Compute the new direction of the snake
@@ -117,7 +117,7 @@ class Game:
                     self.__score -= 50
                 else:
                     self.__paralyzed = 0
-                    self.__paralyzed_segments = 3
+                    self.__blue_segments = 3
                     self.__map.blue_fruits.pop(index)
                     self.__score -= 10
 
@@ -133,7 +133,7 @@ class Game:
         if self.__paralyzed is None:
             self.__screen.draw_snake(self.__yellow_segments, self.__map)
         else:
-            self.__screen.draw_paralyzed_snake(self.__map, self.__paralyzed_segments)
+            self.__screen.draw_paralyzed_snake(self.__map, self.__blue_segments)
         self.__screen.draw_fruit(self.__map)
         self.__screen.draw_yellow_fruit(self.__map)
         self.__screen.draw_poison(self.__map)
@@ -206,9 +206,9 @@ class Game:
                     self.change_to = random.choice(['DOWN', 'LEFT', 'UP'])
                 else:
                     self.change_to = random.choice(['DOWN', 'RIGHT', 'UP'])
-                self.__paralyzed_segments -= 1
+                self.__blue_segments -= 1
 
-            elif self.__paralyzed_segments == 0:
+            elif self.__blue_segments == 0:
                 self.__paralyzed = None
 
         # If two keys pressed simultaneously
@@ -270,7 +270,7 @@ class Game:
                     self.__score -= 50
                 else:
                     self.__paralyzed = 0
-                    self.__paralyzed_segments = 3
+                    self.__blue_segments = 3
                     self.__map.blue_fruits.pop(index)
                     self.__score -= 10
 
@@ -286,7 +286,7 @@ class Game:
         if self.__paralyzed is None:
             self.__screen.draw_snake(self.__yellow_segments, self.__map)
         else:
-            self.__screen.draw_paralyzed_snake(self.__map, self.__paralyzed_segments)
+            self.__screen.draw_paralyzed_snake(self.__map, self.__blue_segments)
         self.__screen.draw_fruit(self.__map)
         self.__screen.draw_yellow_fruit(self.__map)
         self.__screen.draw_poison(self.__map)
