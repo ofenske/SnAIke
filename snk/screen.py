@@ -58,13 +58,13 @@ class Screen:
                                  pygame.Rect(pos[0] * 10, pos[1] * 10, 10, 10))
 
     def draw_fruit(self, map) -> None:
-        """Draw fruit onto the the screen.
+        """Draw fruit onto the screen.
 
         :param map: The map object
         :return: None
         """
         pygame.draw.rect(self.__game_window, self.__white, pygame.Rect(
-            map.fruit_position[0] * 10, map.fruit_position[1] * 10, 10, 10))
+            map.white_fruit[0] * 10, map.white_fruit[1] * 10, 10, 10))
 
     def draw_super_food(self, map: Map) -> None:
         """Draw the super food.
@@ -82,7 +82,7 @@ class Screen:
         :param map: The map object
         :return: None
         """
-        for item in map.poison_position:
+        for item in map.red_fruits:
             pygame.draw.rect(self.__game_window, self.__red, pygame.Rect(
                 item[0] * 10, item[1] * 10, 10, 10))
 

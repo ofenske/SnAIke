@@ -148,7 +148,7 @@ class Game:
         # Game over conditions
         if self.__super_segments == 0:
             # Eat poison food
-            for item in self.__map.poison_position:
+            for item in self.__map.red_fruits:
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
                     self.__screen.game_over(self.__score, self.__map.window_x, self.__map.window_y)
 
@@ -160,13 +160,13 @@ class Game:
         # Decrease number of super segments if snake eats poison or touches snake body
         else:
             # Eat poison food
-            for index, item in enumerate(self.__map.poison_position):
+            for index, item in enumerate(self.__map.red_fruits):
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
                     self.__super_segments = 0
                     self.__score -= 50
-                    self.__map.poison_position.pop(index)
-                    num_poison = len(self.__map.poison_position) // 2
-                    del self.__map.poison_position[-num_poison:]
+                    self.__map.red_fruits.pop(index)
+                    num_poison = len(self.__map.red_fruits) // 2
+                    del self.__map.red_fruits[-num_poison:]
 
             # Touching the snake body
             for index, block in enumerate(self.__map.snake_body[1:]):
@@ -301,7 +301,7 @@ class Game:
         # Game over conditions
         if self.__super_segments == 0:
             # Eat poison food
-            for item in self.__map.poison_position:
+            for item in self.__map.red_fruits:
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
                     self.__screen.game_over(self.__score, self.__map.window_x, self.__map.window_y)
 
@@ -313,13 +313,13 @@ class Game:
         # Decrease number of super segments if snake eats poison or touches snake body
         else:
             # Eat poison food
-            for index, item in enumerate(self.__map.poison_position):
+            for index, item in enumerate(self.__map.red_fruits):
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
                     self.__super_segments = 0
                     self.__score -= 50
-                    self.__map.poison_position.pop(index)
-                    num_poison = len(self.__map.poison_position)//2
-                    del self.__map.poison_position[-num_poison:]
+                    self.__map.red_fruits.pop(index)
+                    num_poison = len(self.__map.red_fruits)//2
+                    del self.__map.red_fruits[-num_poison:]
 
             # Touching the snake body
             for index, block in enumerate(self.__map.snake_body[1:]):
@@ -341,7 +341,7 @@ class Game:
             snake_position = Position of the snake head as a list: [x,y]
             snake_body = Position of all body parts of the snake as a list of lists: [[x1,y1],...,[xn, yn]]
             white_fruit = x and y coordinates of the food as a list: [x,y]
-            poison_position = x and y coordinates of poison food as a list of lists: [[x1,y1],...,[xn, yn]]
+            red_fruits = x and y coordinates of poison food as a list of lists: [[x1,y1],...,[xn, yn]]
             super_food = x and y coordinates of super food as a list: [x,y] (gives snake 3 super segments)
             snake_direction = The direction in which the snake is heading as a string: UP|DOWN|RIGHT|LEFT
             window_x = Maximum size of map in x dimension
