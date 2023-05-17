@@ -31,7 +31,7 @@ class Map:
         self.__blue_fruits = [[random.randrange(1, self.__window_x),
                                      random.randrange(1, self.__window_y)]]
 
-        self.__super_food = []
+        self.__yellow_fruit = []
 
         self.__fruit_spawn = True
 
@@ -117,17 +117,17 @@ class Map:
         self.__blue_fruits = blue_fruits
 
     @property
-    def super_food(self) -> list:
+    def yellow_fruit(self) -> list:
         """Coordinates of super food.
 
         :return: x and y of super food
         :rtype: list
         """
-        return self.__super_food
+        return self.__yellow_fruit
 
-    @super_food.setter
-    def super_food(self, super_food: list):
-        self.__super_food = super_food
+    @yellow_fruit.setter
+    def yellow_fruit(self, yellow_fruit: list):
+        self.__yellow_fruit = yellow_fruit
 
     @property
     def fruit_spawn(self) -> bool:
@@ -171,7 +171,7 @@ class Map:
                               random.randrange(1, self.__window_y)]
         if self.__white_fruit in self.__blue_fruits or self.__white_fruit in self.__red_fruits:
             self.spawn_new_fruit()
-        elif self.__white_fruit in self.__super_food:
+        elif self.__white_fruit in self.__yellow_fruit:
             self.spawn_new_fruit()
 
     def spawn_new_poison(self):
@@ -179,7 +179,7 @@ class Map:
                            random.randrange(1, self.__window_y)]
         if red_fruits in self.__blue_fruits or red_fruits in self.__white_fruit:
             self.spawn_new_poison()
-        elif red_fruits in self.__super_food:
+        elif red_fruits in self.__yellow_fruit:
             self.spawn_new_poison()
         else:
             self.__red_fruits.append(red_fruits)
@@ -190,16 +190,16 @@ class Map:
 
         if paralyzed_food in self.__red_fruits or paralyzed_food in self.__white_fruit:
             self.spawn_new_paralyze_food()
-        elif paralyzed_food in self.__super_food:
+        elif paralyzed_food in self.__yellow_fruit:
             self.spawn_new_paralyze_food()
         else:
             self.__blue_fruits.append(paralyzed_food)
 
-    def spawn_new_super_food(self):
-        self.__super_food = [random.randrange(1, self.__window_x),
+    def spawn_new_yellow_fruit(self):
+        self.__yellow_fruit = [random.randrange(1, self.__window_x),
                              random.randrange(1, self.__window_y)]
 
-        if self.__super_food in self.__red_fruits or self.__super_food in self.__white_fruit:
-            self.spawn_new_super_food()
-        elif self.__super_food in self.__blue_fruits:
-            self.spawn_new_super_food()
+        if self.__yellow_fruit in self.__red_fruits or self.__yellow_fruit in self.__white_fruit:
+            self.spawn_new_yellow_fruit()
+        elif self.__yellow_fruit in self.__blue_fruits:
+            self.spawn_new_yellow_fruit()

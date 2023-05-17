@@ -66,15 +66,15 @@ class Screen:
         pygame.draw.rect(self.__game_window, self.__white, pygame.Rect(
             map.white_fruit[0] * 10, map.white_fruit[1] * 10, 10, 10))
 
-    def draw_super_food(self, map: Map) -> None:
+    def draw_yellow_fruit(self, map: Map) -> None:
         """Draw the super food.
 
         :param map: The map object.
         :return: None
         """
-        if len(map.super_food) > 0:
+        if len(map.yellow_fruit) > 0:
             pygame.draw.rect(self.__game_window, self.__yellow, pygame.Rect(
-                map.super_food[0] * 10, map.super_food[1] * 10, 10, 10))
+                map.yellow_fruit[0] * 10, map.yellow_fruit[1] * 10, 10, 10))
 
     def draw_poison(self, map: Map) -> None:
         """Draw poison food.

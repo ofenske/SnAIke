@@ -95,18 +95,18 @@ class Game:
             self.__map.fruit_spawn = False
             # Every 5 turns we will spawn new super food, which give the snake 3 super segments
             if self.__turn % 5 == 0:
-                self.__map.spawn_new_super_food()
+                self.__map.spawn_new_yellow_fruit()
             else:
-                self.__map.super_food = []
+                self.__map.yellow_fruit = []
         else:
             self.__map.snake_body.pop()
 
         # check if snake eats super food
-        if len(self.__map.super_food) > 0:
-            if self.__map.snake_position[0] == self.__map.super_food[0] and self.__map.snake_position[1] == \
-                    self.__map.super_food[1]:
+        if len(self.__map.yellow_fruit) > 0:
+            if self.__map.snake_position[0] == self.__map.yellow_fruit[0] and self.__map.snake_position[1] == \
+                    self.__map.yellow_fruit[1]:
                 self.__super_segments = 3
-                self.__map.super_food = []
+                self.__map.yellow_fruit = []
 
         # check if snake eats paralyze food
         for index, item in enumerate(self.__map.blue_fruits):
@@ -135,7 +135,7 @@ class Game:
         else:
             self.__screen.draw_paralyzed_snake(self.__map, self.__paralyzed_segments)
         self.__screen.draw_fruit(self.__map)
-        self.__screen.draw_super_food(self.__map)
+        self.__screen.draw_yellow_fruit(self.__map)
         self.__screen.draw_poison(self.__map)
         self.__screen.draw_paralyze(self.__map)
 
@@ -248,18 +248,18 @@ class Game:
             self.__map.fruit_spawn = False
             # Every 5 turns we will spawn new super food, which give the snake 3 super segments
             if self.__turn % 5 == 0:
-                self.__map.spawn_new_super_food()
+                self.__map.spawn_new_yellow_fruit()
             else:
-                self.__map.super_food = []
+                self.__map.yellow_fruit = []
         else:
             self.__map.snake_body.pop()
 
         # check if snake eats super food
-        if len(self.__map.super_food) > 0:
-            if self.__map.snake_position[0] == self.__map.super_food[0] and self.__map.snake_position[1] == \
-                    self.__map.super_food[1]:
+        if len(self.__map.yellow_fruit) > 0:
+            if self.__map.snake_position[0] == self.__map.yellow_fruit[0] and self.__map.snake_position[1] == \
+                    self.__map.yellow_fruit[1]:
                 self.__super_segments = 3
-                self.__map.super_food = []
+                self.__map.yellow_fruit = []
 
         # check if snake eats paralyze food
         for index, item in enumerate(self.__map.blue_fruits):
@@ -288,7 +288,7 @@ class Game:
         else:
             self.__screen.draw_paralyzed_snake(self.__map, self.__paralyzed_segments)
         self.__screen.draw_fruit(self.__map)
-        self.__screen.draw_super_food(self.__map)
+        self.__screen.draw_yellow_fruit(self.__map)
         self.__screen.draw_poison(self.__map)
         self.__screen.draw_paralyze(self.__map)
 
@@ -342,7 +342,7 @@ class Game:
             snake_body = Position of all body parts of the snake as a list of lists: [[x1,y1],...,[xn, yn]]
             white_fruit = x and y coordinates of the food as a list: [x,y]
             red_fruits = x and y coordinates of poison food as a list of lists: [[x1,y1],...,[xn, yn]]
-            super_food = x and y coordinates of super food as a list: [x,y] (gives snake 3 super segments)
+            yellow_fruit = x and y coordinates of super food as a list: [x,y] (gives snake 3 super segments)
             snake_direction = The direction in which the snake is heading as a string: UP|DOWN|RIGHT|LEFT
             window_x = Maximum size of map in x dimension
             window_y = Maximum size of map in y dimension
