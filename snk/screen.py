@@ -37,16 +37,16 @@ class Screen:
         """
         self.__game_window.fill(self.__black)
 
-    def draw_snake(self, super_segments: int, map: Map) -> None:
+    def draw_snake(self, yellow_segments: int, map: Map) -> None:
         """Draw all part of the snake onto the window.
 
-        :param super_segments: Number of super segments of the snake
+        :param yellow_segments: Number of super segments of the snake
         :param map: The map object
         :return: None
         """
-        if super_segments > 0:
+        if yellow_segments > 0:
             for index, pos in enumerate(map.snake_body):
-                if index <= super_segments:
+                if index <= yellow_segments:
                     pygame.draw.rect(self.__game_window, self.__yellow,
                                      pygame.Rect(pos[0] * 10, pos[1] * 10, 10, 10))
                 else:

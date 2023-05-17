@@ -18,7 +18,7 @@ class Map:
                              [8, 5],
                              [7, 5]]
         self.__paralyzed_segments = 0
-        self.__super_segments = 0
+        self.__yellow_segments = 0
         # set a seed for the generator
         random.seed(8)
         # fruit position
@@ -155,12 +155,12 @@ class Map:
         self.__paralyzed_segments = num
 
     @property
-    def super_segments(self) -> int:
-        return self.__super_segments
+    def yellow_segments(self) -> int:
+        return self.__yellow_segments
 
-    @super_segments.setter
-    def super_segments(self, num: int):
-        self.__super_segments = num
+    @yellow_segments.setter
+    def yellow_segments(self, num: int):
+        self.__yellow_segments = num
 
     @snake_direction.setter
     def snake_direction(self, snake_direction: bool):
