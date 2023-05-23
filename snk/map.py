@@ -26,10 +26,10 @@ class Map:
                               random.randrange(1, self.__window_y)]
 
         self.__red_fruits = [[random.randrange(1, self.__window_x),
-                                   random.randrange(1, self.__window_y)]]
+                              random.randrange(1, self.__window_y)]]
 
         self.__blue_fruits = [[random.randrange(1, self.__window_x),
-                                     random.randrange(1, self.__window_y)]]
+                               random.randrange(1, self.__window_y)]]
 
         self.__yellow_fruit = []
 
@@ -176,7 +176,7 @@ class Map:
 
     def spawn_new_poison(self):
         red_fruits = [random.randrange(1, self.__window_x),
-                           random.randrange(1, self.__window_y)]
+                      random.randrange(1, self.__window_y)]
         if red_fruits in self.__blue_fruits or red_fruits in self.__white_fruit:
             self.spawn_new_poison()
         elif red_fruits in self.__yellow_fruit:
@@ -197,7 +197,7 @@ class Map:
 
     def spawn_new_yellow_fruit(self):
         self.__yellow_fruit = [random.randrange(1, self.__window_x),
-                             random.randrange(1, self.__window_y)]
+                               random.randrange(1, self.__window_y)]
 
         if self.__yellow_fruit in self.__red_fruits or self.__yellow_fruit in self.__white_fruit:
             self.spawn_new_yellow_fruit()
