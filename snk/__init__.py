@@ -20,9 +20,7 @@ class Game:
         # Set the initial values for the game
         self.__score = 0
         self.__turn = 1
-        self.__yellow_segments = self.__map.yellow_segments
         self.__paralyzed = None
-        self.__blue_segments = self.__map.blue_segments
         self.change_to = self.__map.snake_direction
         # Initialising pygame
         pygame.init()
@@ -86,9 +84,9 @@ class Game:
         if self.__map.snake_position[0] == self.__map.white_fruit[0] and self.__map.snake_position[1] == \
                 self.__map.white_fruit[1]:
             # If we have super segments then score will be incremented by 20
-            if self.__yellow_segments > 0:
+            if self.__map.yellow_segments > 0:
                 self.__score += 50
-                self.__yellow_segments -= 1
+                self.__map.yellow_segments -= 1
             else:
                 self.__score += 10
             self.__turn += 1
@@ -105,15 +103,15 @@ class Game:
         if len(self.__map.yellow_fruit) > 0:
             if self.__map.snake_position[0] == self.__map.yellow_fruit[0] and self.__map.snake_position[1] == \
                     self.__map.yellow_fruit[1]:
-                self.__yellow_segments = 3
+                self.__map.yellow_segments = 3
                 self.__map.yellow_fruit = []
 
         # check if snake eats paralyze food
         for index, item in enumerate(self.__map.blue_fruits):
             if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
-                if self.__yellow_segments > 0:
+                if self.__map.yellow_segments > 0:
                     self.__map.blue_fruits = []
-                    self.__yellow_segments = 0
+                    self.__map.yellow_segments = 0
                     self.__score -= 50
                 else:
                     self.__paralyzed = 0
@@ -131,7 +129,7 @@ class Game:
         # visuals
         self.__screen.reset_window()
         if self.__paralyzed is None:
-            self.__screen.draw_snake(self.__yellow_segments, self.__map)
+            self.__screen.draw_snake(self.__map.yellow_segments, self.__map)
         else:
             self.__screen.draw_paralyzed_snake(self.__map, self.__blue_segments)
         self.__screen.draw_fruit(self.__map)
@@ -146,7 +144,7 @@ class Game:
             self.__screen.game_over(self.__score, self.__map.window_x, self.__map.window_y)
 
         # Game over conditions
-        if self.__yellow_segments == 0:
+        if self.__map.yellow_segments == 0:
             # Eat poison food
             for item in self.__map.red_fruits:
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
@@ -162,7 +160,7 @@ class Game:
             # Eat poison food
             for index, item in enumerate(self.__map.red_fruits):
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
-                    self.__yellow_segments = 0
+                    self.__map.yellow_segments = 0
                     self.__score -= 50
                     self.__map.red_fruits.pop(index)
                     num_poison = len(self.__map.red_fruits) // 2
@@ -171,7 +169,7 @@ class Game:
             # Touching the snake body
             for index, block in enumerate(self.__map.snake_body[1:]):
                 if self.__map.snake_position[0] == block[0] and self.__map.snake_position[1] == block[1]:
-                    self.__yellow_segments -= 1
+                    self.__map.yellow_segments -= 1
                     num = len(self.__map.snake_body) - index
                     del self.__map.snake_body[-num:]
 
@@ -206,9 +204,9 @@ class Game:
                     self.change_to = random.choice(['DOWN', 'LEFT', 'UP'])
                 else:
                     self.change_to = random.choice(['DOWN', 'RIGHT', 'UP'])
-                self.__blue_segments -= 1
+                self.__map.blue_segments -= 1
 
-            elif self.__blue_segments == 0:
+            elif self.__map.blue_segments == 0:
                 self.__paralyzed = None
 
         # If two keys pressed simultaneously
@@ -239,9 +237,9 @@ class Game:
         if self.__map.snake_position[0] == self.__map.white_fruit[0] and self.__map.snake_position[1] == \
                 self.__map.white_fruit[1]:
             # If we have super segments then score will be incremented by 20
-            if self.__yellow_segments > 0:
+            if self.__map.yellow_segments > 0:
                 self.__score += 50
-                self.__yellow_segments -= 1
+                self.__map.yellow_segments -= 1
             else:
                 self.__score += 10
             self.__turn += 1
@@ -258,19 +256,19 @@ class Game:
         if len(self.__map.yellow_fruit) > 0:
             if self.__map.snake_position[0] == self.__map.yellow_fruit[0] and self.__map.snake_position[1] == \
                     self.__map.yellow_fruit[1]:
-                self.__yellow_segments = 3
+                self.__map.yellow_segments = 3
                 self.__map.yellow_fruit = []
 
         # check if snake eats paralyze food
         for index, item in enumerate(self.__map.blue_fruits):
             if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
-                if self.__yellow_segments > 0:
+                if self.__map.yellow_segments > 0:
                     self.__map.blue_fruits = []
-                    self.__yellow_segments = 0
+                    self.__map.yellow_segments = 0
                     self.__score -= 50
                 else:
                     self.__paralyzed = 0
-                    self.__blue_segments = 3
+                    self.__map.blue_segments = 3
                     self.__map.blue_fruits.pop(index)
                     self.__score -= 10
 
@@ -284,9 +282,9 @@ class Game:
         # visuals
         self.__screen.reset_window()
         if self.__paralyzed is None:
-            self.__screen.draw_snake(self.__yellow_segments, self.__map)
+            self.__screen.draw_snake(self.__map.yellow_segments, self.__map)
         else:
-            self.__screen.draw_paralyzed_snake(self.__map, self.__blue_segments)
+            self.__screen.draw_paralyzed_snake(self.__map, self.__map.blue_segments)
         self.__screen.draw_fruit(self.__map)
         self.__screen.draw_yellow_fruit(self.__map)
         self.__screen.draw_poison(self.__map)
@@ -299,7 +297,7 @@ class Game:
             self.__screen.game_over(self.__score, self.__map.window_x, self.__map.window_y)
 
         # Game over conditions
-        if self.__yellow_segments == 0:
+        if self.__map.yellow_segments == 0:
             # Eat poison food
             for item in self.__map.red_fruits:
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
@@ -315,7 +313,7 @@ class Game:
             # Eat poison food
             for index, item in enumerate(self.__map.red_fruits):
                 if self.__map.snake_position[0] == item[0] and self.__map.snake_position[1] == item[1]:
-                    self.__yellow_segments = 0
+                    self.__map.yellow_segments = 0
                     self.__score -= 50
                     self.__map.red_fruits.pop(index)
                     num_poison = len(self.__map.red_fruits)//2
@@ -324,7 +322,7 @@ class Game:
             # Touching the snake body
             for index, block in enumerate(self.__map.snake_body[1:]):
                 if self.__map.snake_position[0] == block[0] and self.__map.snake_position[1] == block[1]:
-                    self.__yellow_segments -= 1
+                    self.__map.yellow_segments -= 1
                     num = len(self.__map.snake_body) - index
                     del self.__map.snake_body[-num:]
 
