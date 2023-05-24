@@ -171,15 +171,15 @@ class Map:
                               random.randrange(1, self.__window_y)]
         if self.__white_fruit in self.__blue_fruits or self.__white_fruit in self.__red_fruits:
             self.spawn_new_fruit()
-        elif self.__white_fruit in self.__yellow_fruit:
+        elif self.__white_fruit == self.__yellow_fruit:
             self.spawn_new_fruit()
 
     def spawn_new_poison(self):
         red_fruits = [random.randrange(1, self.__window_x),
                       random.randrange(1, self.__window_y)]
-        if red_fruits in self.__blue_fruits or red_fruits in self.__white_fruit:
+        if red_fruits in self.__blue_fruits or red_fruits == self.__white_fruit:
             self.spawn_new_poison()
-        elif red_fruits in self.__yellow_fruit:
+        elif red_fruits == self.__yellow_fruit:
             self.spawn_new_poison()
         else:
             self.__red_fruits.append(red_fruits)
@@ -188,9 +188,9 @@ class Map:
         paralyzed_food = [random.randrange(1, self.__window_x),
                           random.randrange(1, self.__window_y)]
 
-        if paralyzed_food in self.__red_fruits or paralyzed_food in self.__white_fruit:
+        if paralyzed_food in self.__red_fruits or paralyzed_food == self.__white_fruit:
             self.spawn_new_paralyze_food()
-        elif paralyzed_food in self.__yellow_fruit:
+        elif paralyzed_food == self.__yellow_fruit:
             self.spawn_new_paralyze_food()
         else:
             self.__blue_fruits.append(paralyzed_food)
@@ -199,7 +199,7 @@ class Map:
         self.__yellow_fruit = [random.randrange(1, self.__window_x),
                                random.randrange(1, self.__window_y)]
 
-        if self.__yellow_fruit in self.__red_fruits or self.__yellow_fruit in self.__white_fruit:
+        if self.__yellow_fruit in self.__red_fruits or self.__yellow_fruit == self.__white_fruit:
             self.spawn_new_yellow_fruit()
         elif self.__yellow_fruit in self.__blue_fruits:
             self.spawn_new_yellow_fruit()
