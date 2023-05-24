@@ -93,7 +93,7 @@ class Game:
             self.__map.fruit_spawn = False
             # Every 5 turns we will spawn new super food, which give the snake 3 super segments
             if self.__turn % 5 == 0:
-                self.__map.spawn_new_yellow_fruit()
+                self.__map.spawn_yellow_fruit()
             else:
                 self.__map.yellow_fruit = []
         else:
@@ -121,9 +121,9 @@ class Game:
 
         # Spawn new fruit and poison
         if not self.__map.fruit_spawn:
-            self.__map.spawn_new_fruit()
-            self.__map.spawn_new_poison()
-            self.__map.spawn_new_paralyze_food()
+            self.__map.spawn_white_fruit()
+            self.__map.spawn_red_fruit()
+            self.__map.spawn_blue_fruit()
         self.__map.fruit_spawn = True
 
         # visuals
@@ -246,7 +246,7 @@ class Game:
             self.__map.fruit_spawn = False
             # Every 5 turns we will spawn new super food, which give the snake 3 super segments
             if self.__turn % 5 == 0:
-                self.__map.spawn_new_yellow_fruit()
+                self.__map.spawn_yellow_fruit()
             else:
                 self.__map.yellow_fruit = []
         else:
@@ -274,9 +274,9 @@ class Game:
 
         # Spawn new fruit and poison
         if not self.__map.fruit_spawn:
-            self.__map.spawn_new_fruit()
-            self.__map.spawn_new_poison()
-            self.__map.spawn_new_paralyze_food()
+            self.__map.spawn_white_fruit()
+            self.__map.spawn_red_fruit()
+            self.__map.spawn_blue_fruit()
         self.__map.fruit_spawn = True
 
         # visuals

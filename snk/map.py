@@ -166,40 +166,40 @@ class Map:
     def snake_direction(self, snake_direction: bool):
         self.__snake_direction = snake_direction
 
-    def spawn_new_fruit(self):
+    def spawn_white_fruit(self):
         self.__white_fruit = [random.randrange(1, self.__window_x),
                               random.randrange(1, self.__window_y)]
         if self.__white_fruit in self.__blue_fruits or self.__white_fruit in self.__red_fruits:
-            self.spawn_new_fruit()
+            self.spawn_white_fruit()
         elif self.__white_fruit == self.__yellow_fruit:
-            self.spawn_new_fruit()
+            self.spawn_white_fruit()
 
-    def spawn_new_poison(self):
+    def spawn_red_fruit(self):
         red_fruits = [random.randrange(1, self.__window_x),
                       random.randrange(1, self.__window_y)]
         if red_fruits in self.__blue_fruits or red_fruits == self.__white_fruit:
-            self.spawn_new_poison()
+            self.spawn_red_fruit()
         elif red_fruits == self.__yellow_fruit:
-            self.spawn_new_poison()
+            self.spawn_red_fruit()
         else:
             self.__red_fruits.append(red_fruits)
 
-    def spawn_new_paralyze_food(self):
-        paralyzed_food = [random.randrange(1, self.__window_x),
+    def spawn_blue_fruit(self):
+        blue_fruit = [random.randrange(1, self.__window_x),
                           random.randrange(1, self.__window_y)]
 
-        if paralyzed_food in self.__red_fruits or paralyzed_food == self.__white_fruit:
-            self.spawn_new_paralyze_food()
-        elif paralyzed_food == self.__yellow_fruit:
-            self.spawn_new_paralyze_food()
+        if blue_fruit in self.__red_fruits or blue_fruit == self.__white_fruit:
+            self.spawn_blue_fruit()
+        elif blue_fruit == self.__yellow_fruit:
+            self.spawn_blue_fruit()
         else:
-            self.__blue_fruits.append(paralyzed_food)
+            self.__blue_fruits.append(blue_fruit)
 
-    def spawn_new_yellow_fruit(self):
+    def spawn_yellow_fruit(self):
         self.__yellow_fruit = [random.randrange(1, self.__window_x),
                                random.randrange(1, self.__window_y)]
 
         if self.__yellow_fruit in self.__red_fruits or self.__yellow_fruit == self.__white_fruit:
-            self.spawn_new_yellow_fruit()
+            self.spawn_yellow_fruit()
         elif self.__yellow_fruit in self.__blue_fruits:
-            self.spawn_new_yellow_fruit()
+            self.spawn_yellow_fruit()
