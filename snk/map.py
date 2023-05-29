@@ -171,7 +171,7 @@ class Map:
                               random.randrange(1, self.__window_y)]
         if self.__white_fruit in self.__blue_fruits or self.__white_fruit in self.__red_fruits:
             self.spawn_white_fruit()
-        elif self.__white_fruit == self.__yellow_fruit:
+        elif self.__white_fruit == self.__yellow_fruit or self.__white_fruit == self.snake_position:
             self.spawn_white_fruit()
 
     def spawn_red_fruit(self):
@@ -180,6 +180,8 @@ class Map:
         if red_fruit in self.__blue_fruits or red_fruit == self.__white_fruit:
             self.spawn_red_fruit()
         elif red_fruit in self.__red_fruits or red_fruit == self.__yellow_fruit:
+            self.spawn_red_fruit()
+        elif red_fruit == self.__snake_position:
             self.spawn_red_fruit()
         else:
             self.__red_fruits.append(red_fruit)
@@ -192,6 +194,8 @@ class Map:
             self.spawn_blue_fruit()
         elif blue_fruit in self.__blue_fruits or blue_fruit == self.__yellow_fruit:
             self.spawn_blue_fruit()
+        elif blue_fruit == self.__snake_position:
+            self.spawn_blue_fruit()
         else:
             self.__blue_fruits.append(blue_fruit)
 
@@ -201,5 +205,5 @@ class Map:
 
         if self.__yellow_fruit in self.__red_fruits or self.__yellow_fruit == self.__white_fruit:
             self.spawn_yellow_fruit()
-        elif self.__yellow_fruit in self.__blue_fruits:
+        elif self.__yellow_fruit in self.__blue_fruits or self.__yellow_fruit == self.__snake_position:
             self.spawn_yellow_fruit()
