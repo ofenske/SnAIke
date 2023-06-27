@@ -41,9 +41,7 @@ Darüber hinaus gibt es bei dieser Variante noch ein paar Extra-Regeln:
   Früchte von der Map und man bekommt -50 Punkte. Die Schlange verliert zusätzlich alle verbleibenden Super-Segmente.
 * Gelbe Früchte: 
   * Respawn: Mit jeder fünften weißen Frucht erscheint einmalig eine gelbe Frucht die direkt im nächsten Zug verschwindet, sollte sie nicht vor einer weißen Frucht gegessen werden.
-  * Wirkung: Schlange ist immun gegenüber blauen und roten Früchten. Die nächsten 3 weißen Früchte geben jeweils 50 Punkte.  
-  * Besonderheit: Besitzt die Schlange Super-Segmente und berührt ihren eigenen Körper so verschwindet ein Super-Segment 
-  und sie beißt sich diesen Teil ihres Körpers ab (sie wird also kürzer!).
+  * Wirkung: Schlange ist immun gegenüber blauen und roten Früchten. Die nächsten 3 weißen Früchte geben jeweils 50 Punkte.
 
 Du siehst also das es sich hier um eine Snake-Erweiterung handelt! Verwende einfach den Befehl `python play.py` und 
 probiere das Spiel zunächst selbst aus, falls du nicht alle Regeln verstanden haben solltest.
