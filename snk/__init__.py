@@ -169,9 +169,7 @@ class Game:
             # Touching the snake body
             for index, block in enumerate(self.__map.snake_body[1:]):
                 if self.__map.snake_position[0] == block[0] and self.__map.snake_position[1] == block[1]:
-                    self.__map.yellow_segments -= 1
-                    num = len(self.__map.snake_body) - index
-                    del self.__map.snake_body[-num:]
+                    self.__screen.game_over(self.__score, self.__map.window_x, self.__map.window_y)
 
         # displaying score continuously
         self.__screen.show_score(self.__score)
@@ -322,9 +320,7 @@ class Game:
             # Touching the snake body
             for index, block in enumerate(self.__map.snake_body[1:]):
                 if self.__map.snake_position[0] == block[0] and self.__map.snake_position[1] == block[1]:
-                    self.__map.yellow_segments -= 1
-                    num = len(self.__map.snake_body) - index
-                    del self.__map.snake_body[-num:]
+                    self.__screen.game_over(self.__score, self.__map.window_x, self.__map.window_y)
 
         # displaying score continuously
         self.__screen.show_score(self.__score)
